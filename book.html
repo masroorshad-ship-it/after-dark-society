@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book Your Table — After Dark Society</title>
+  <meta name="description" content="Reserve a table at the next After Dark Society, Bolly Room or Sound Society night.">
+  <meta name="theme-color" content="#060508">
+  <meta property="og:title" content="Book Your Table — After Dark Society">
+  <meta property="og:description" content="Reserve a table at the next After Dark Society, Bolly Room or Sound Society night.">
+  <meta property="og:image" content="assets/img/after-dark-society.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header id="site-header"></header>
+<main>
+<section class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow reveal">Book your table</span>
+    <h1 class="display h1 reveal" data-delay="1">Reserve the <span class="script">best seat</span></h1>
+    <p class="lead reveal" data-delay="2">Tell us the night and the size of your group. Our team confirms availability and pricing personally.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap form-layout">
+    <aside class="form-aside reveal">
+      <span class="eyebrow">Concierge request</span>
+      <ul>
+        <li><div><b>Send a request</b>Takes under a minute.</div></li>
+        <li><div><b>We call you back</b>Our reservations team confirms your table and minimum spend.</div></li>
+        <li><div><b>Walk straight in</b>Your name is on the guest list — no queue.</div></li>
+      </ul>
+    </aside>
+
+    <div class="form reveal" data-delay="1">
+      <form data-form="Table booking" novalidate>
+        <div class="form-body">
+          <div class="form-grid">
+            <div class="field"><label for="b-name">Full name <span class="req">*</span></label><input id="b-name" name="name" autocomplete="name" required></div>
+            <div class="field"><label for="b-phone">Phone / WhatsApp <span class="req">*</span></label><input id="b-phone" name="phone" type="tel" autocomplete="tel" required></div>
+            <div class="field full"><label for="b-email">Email</label><input id="b-email" name="email" type="email" autocomplete="email"></div>
+            <div class="field full">
+              <label for="b-event">Event <span class="req">*</span></label>
+              <select id="b-event" name="event" data-events required>
+                <option value="">Choose a night</option>
+                <option value="Private event / other date">Private event / other date</option>
+              </select>
+            </div>
+            <div class="field"><label for="b-date">Date</label><input id="b-date" name="date" type="date"></div>
+            <div class="field"><label for="b-guests">Guests <span class="req">*</span></label><input id="b-guests" name="guests" type="number" min="1" max="60" inputmode="numeric" required></div>
+            <div class="field full">
+              <label>Table type</label>
+              <div class="chips" data-tables>
+                <label><input type="radio" name="table" value="Standard" checked><span>Standard</span></label>
+              </div>
+            </div>
+            <div class="field full"><label for="b-notes">Anything we should know?</label><textarea id="b-notes" name="notes" placeholder="Birthday, bottle preferences, arrival time…"></textarea></div>
+          </div>
+          <div class="form-foot">
+            <small>21+ only. Tables are confirmed once our team contacts you.</small>
+            <button class="btn" type="submit">Request table</button>
+          </div>
+        </div>
+        <div class="form-success">
+          <span class="script">Thank you</span>
+          <h2 class="display h3">Your request is in.</h2>
+          <p class="lead" style="margin:14px auto 0">Our reservations team will reach out shortly to confirm your table.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+<footer id="site-footer"></footer>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
