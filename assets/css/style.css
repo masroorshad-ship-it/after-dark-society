@@ -492,3 +492,11 @@ a.tile:hover { background: var(--ink-2); }
   .hero-actions .btn { width: 100%; }
 }
 [id] { scroll-margin-top: 100px; }
+
+/* Brand logos used in place of written names */
+.marquee .m-logo img { height: clamp(48px, 6vw, 72px); width: auto; }
+.format-mark { margin: 0; }
+.format-logo { height: 92px; width: auto; }
+.event-mark { margin: 0 0 8px !important; }
+.event-logo { height: 70px; width: auto; }
+.brand-card img { margin-bottom: 36px; }

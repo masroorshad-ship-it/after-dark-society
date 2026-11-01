@@ -173,6 +173,10 @@
     }
   }
 
+  /* Brand logo in place of a written brand name */
+  const brandOf = (name) => (D.brands || []).find((b) => b.name.toLowerCase() === String(name || "").toLowerCase());
+  const mark = (name, cls) => { const b = brandOf(name); return b ? `<img class="${cls}" src="${esc(b.logo)}" alt="${esc(b.name)}" loading="lazy">` : null; };
+
   /* ---- Renderers --------------------------------------------------------- */
   const render = (id, html) => { const el = document.getElementById(id); if (el) { el.innerHTML = html; watch(el); } };
 
@@ -181,7 +185,7 @@
       <img src="${esc(b.logo)}" alt="${esc(b.name)} logo" loading="lazy">
       <div>
         <span class="tag">${esc(b.tag)}</span>
-        <h3 class="display h3">${esc(b.name)}</h3>
+        <h3 class="sr-only">${esc(b.name)}</h3>
         <p>${esc(b.text)}</p>
       </div>
     </article>`).join(""));
@@ -190,7 +194,7 @@
     <article class="format reveal" data-delay="${i % 4}">
       <span class="format-num">${String(i + 1).padStart(2, "0")}</span>
       <small>${esc(f.kicker)}</small>
-      <h3 class="display">${esc(f.name)}</h3>
+      ${mark(f.name, "format-logo") ? `<h3 class="format-mark">${mark(f.name, "format-logo")}</h3>` : `<h3 class="display">${esc(f.name)}</h3>`}
       <p>${esc(f.text)}</p>
     </article>`).join(""));
 
@@ -214,8 +218,8 @@
     <li class="event reveal">
       ${dateBlock(e.date)}
       <div>
-        <h3>${esc(e.title)}</h3>
-        <p>${e.brand ? `<span class="chip">${esc(e.brand)}</span>` : ""}${e.venue ? esc(e.venue) : ""}</p>
+        ${mark(e.title, "event-logo") ? `<h3 class="event-mark">${mark(e.title, "event-logo")}</h3>` : `<h3>${esc(e.title)}</h3>`}
+        <p>${e.brand && !brandOf(e.brand) ? `<span class="chip">${esc(e.brand)}</span>` : ""}${e.venue ? esc(e.venue) : ""}</p>
       </div>
       ${past
         ? (e.album ? `<a class="btn btn--ghost" href="${esc(e.album)}" target="_blank" rel="noopener">See the night</a>` : "")
