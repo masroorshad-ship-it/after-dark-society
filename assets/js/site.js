@@ -238,7 +238,9 @@
     if (items.length) {
       gal.innerHTML = items.map((g, i) => {
         const cls = ["g-item", "reveal", g.wide && "wide", g.tall && "tall"].filter(Boolean).join(" ");
-        const img = g.type === "video"
+        const img = g.type === "clip"
+          ? `<video src="${esc(g.src)}"${g.poster ? ` poster="${esc(g.poster)}"` : ""}${matchMedia("(prefers-reduced-motion: reduce)").matches ? "" : " autoplay"} muted loop playsinline preload="metadata" aria-hidden="true"></video>`
+          : g.type === "video"
           ? (g.thumb ? `<img src="${esc(g.thumb)}" alt="${esc(g.caption || "Video")}" loading="lazy">` : `<div class="g-ph">${esc(g.caption || "Watch")}</div>`) + `<span class="play" aria-hidden="true"></span>`
           : `<img src="${esc(g.src)}" alt="${esc(g.caption || "After Dark Society night")}" loading="lazy">`;
         return `<button class="${cls}" data-i="${i}" aria-label="${esc(g.caption || (g.type === "video" ? "Play video" : "Open photo"))}">${img}${g.caption ? `<span class="cap">${esc(g.caption)}</span>` : ""}</button>`;
@@ -255,7 +257,9 @@
         const b = e.target.closest(".g-item"); if (!b) return;
         const g = items[+b.dataset.i];
         let body;
-        if (g.type === "video") {
+        if (g.type === "clip") {
+          body = `<video src="${esc(g.src)}" autoplay loop playsinline controls muted></video>`;
+        } else if (g.type === "video") {
           const yt = String(g.src).match(/(?:youtu\.be\/|v=|shorts\/)([\w-]{11})/);
           if (!yt) { window.open(g.src, "_blank", "noopener"); return; }
           body = `<iframe src="https://www.youtube-nocookie.com/embed/${yt[1]}?autoplay=1" allow="autoplay; encrypted-media; fullscreen" allowfullscreen title="${esc(g.caption || "Video")}"></iframe>`;

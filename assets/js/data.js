@@ -78,14 +78,14 @@ window.ADS = {
   /* ---- Gallery ---------------------------------------------------------- */
   /* Keep this short and strong — 8–12 of the best shots, not everything.
      Put the files in assets/gallery/ and list them here.
-     type: "photo" | "video" (video = YouTube / Instagram / Drive link) */
+     type: "photo" | "clip" (short .mp4 that plays silently in the grid) | "video" (YouTube / Instagram link) */
   gallery: [
     { type: "photo", src: "assets/gallery/the-crowd.jpg",         caption: "The crowd",         wide: true },
     { type: "photo", src: "assets/gallery/live-percussion.jpg",   caption: "Live percussion",   tall: true },
     { type: "photo", src: "assets/gallery/front-row.jpg",         caption: "Front row" },
     { type: "photo", src: "assets/gallery/main-room.jpg",         caption: "Sound Society · the main room", wide: true },
     { type: "photo", src: "assets/gallery/table-celebration.jpg", caption: "Table celebrations" },
-    { type: "photo", src: "assets/gallery/dj-booth.jpg",          caption: "Behind the decks", tall: true },
+    { type: "clip",  src: "assets/gallery/behind-the-decks.mp4", poster: "assets/gallery/behind-the-decks-poster.jpg", caption: "Behind the decks", tall: true },
     { type: "photo", src: "assets/gallery/blue-hour.jpg",         caption: "Blue hour on the floor", tall: true },
     { type: "photo", src: "assets/gallery/on-the-runway.jpg",     caption: "On the runway",     wide: true },
     { type: "photo", src: "assets/gallery/into-the-crowd.jpg",    caption: "Into the crowd",    wide: true },
