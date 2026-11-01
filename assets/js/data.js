@@ -57,7 +57,7 @@ window.ADS = {
     { name: "Opal Room", area: "DIFC", instagram: "https://www.instagram.com/opalroomdifc/" },
     { name: "Hikari",    area: "DIFC", instagram: "https://www.instagram.com/hikaridifc/" },
     { name: "Zea",       area: "",     instagram: "" },
-    { name: "Bvanta",    area: "",     instagram: "" }
+    { name: "Bvanta",    area: "",     instagram: "https://www.instagram.com/bvantadubai/" }
   ],
 
   /* ---- Events ----------------------------------------------------------- */
