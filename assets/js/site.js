@@ -30,25 +30,15 @@
           <img src="assets/img/after-dark-society.png" alt="After Dark Society" width="739" height="285">
         </a>
         <ul class="nav-links" id="nav-links">
-          ${NAV.filter(([h]) => h !== "book.html").map(([h, t]) =>
+          ${NAV.map(([h, t]) =>
             `<li><a href="${h}"${h === here ? ' aria-current="page"' : ""}>${t}</a></li>`).join("")}
-          <li class="mobile-only-book"><a href="book.html"${here === "book.html" ? ' aria-current="page"' : ""}>Book Your Table</a></li>
         </ul>
         <a class="btn nav-cta" href="book.html">Book a Table</a>
-        <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
       </nav>`;
     const solid = () => header.classList.toggle("is-solid", scrollY > 30 || !document.querySelector(".hero"));
     solid(); addEventListener("scroll", solid, { passive: true });
-    const toggle = $(".nav-toggle", header);
-    toggle.addEventListener("click", () => {
-      const open = document.body.classList.toggle("menu-open");
-      toggle.setAttribute("aria-expanded", open);
-    });
-    $$(".nav-links a", header).forEach((a) => a.addEventListener("click", () => document.body.classList.remove("menu-open")));
-    // the dedicated CTA covers "Book" on desktop; keep it in the overlay menu on mobile
-    const style = document.createElement("style");
-    style.textContent = "@media (min-width:1081px){.mobile-only-book{display:none}}";
-    document.head.appendChild(style);
+    const cur = $('.nav-links [aria-current="page"]', header);
+    if (cur) { const ul = cur.closest(".nav-links"); ul.scrollLeft = cur.offsetLeft - (ul.clientWidth - cur.offsetWidth) / 2; }
   }
 
   /* ---- Footer ------------------------------------------------------------ */

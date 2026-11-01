@@ -113,7 +113,7 @@ p { margin: 0 0 1em; }
 .nav-links a:hover::after, .nav-links a[aria-current="page"]::after { transform: scaleX(1); }
 .nav-cta { min-height: 42px; padding: 0 20px; }
 .nav-toggle {
-  display: none; background: none; border: 0; padding: 10px; cursor: pointer; color: var(--gold-hi);
+  display: none !important; background: none; border: 0; padding: 10px; cursor: pointer; color: var(--gold-hi);
   width: 46px; height: 46px; position: relative;
 }
 .nav-toggle span { position: absolute; left: 11px; right: 11px; height: 1px; background: currentColor; transition: transform .35s var(--ease), opacity .2s; }
@@ -124,17 +124,27 @@ p { margin: 0 0 1em; }
 .menu-open .nav-toggle span:nth-child(2) { opacity: 0; }
 .menu-open .nav-toggle span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
-@media (max-width: 1080px) {
-  .nav-toggle { display: block; z-index: 2; }
-  .nav-cta { display: none; }
+/* Below desktop width the tabs drop to their own swipeable row — always visible, never hidden behind a menu */
+@media all {
+  .nav { flex-wrap: wrap; height: auto; padding-top: 10px; row-gap: 4px; }
+  .brand img { height: 40px; }
+  .nav-cta { min-height: 38px; padding: 0 16px; font-size: 11px; }
   .nav-links {
-    position: fixed; inset: 0; z-index: 1; flex-direction: column; justify-content: center; gap: 22px;
-    background: radial-gradient(120% 80% at 50% 0%, #1a1222, var(--ink) 70%);
-    opacity: 0; visibility: hidden; transition: opacity .4s, visibility .4s;
+    order: 3; flex: 1 0 100%; overflow-x: auto; scrollbar-width: none; gap: 22px;
+    padding: 6px 0 10px; -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent);
+    mask-image: linear-gradient(90deg, #000 85%, transparent);
   }
-  .nav-links a { font: 500 34px/1 var(--f-display); letter-spacing: 0; text-transform: none; color: var(--text); }
-  .menu-open .nav-links { opacity: 1; visibility: visible; }
-  .menu-open { overflow: hidden; }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links li { flex: 0 0 auto; }
+  .nav-links a { white-space: nowrap; }
+  .site-header { background: rgba(6, 5, 8, .82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-color: var(--line); }
+  .hero { padding-top: 160px; }
+  .page-hero { padding-top: 170px; }
+  .nav-cta { white-space: nowrap; }
+}
+@media (min-width: 1181px) {
+  .nav-links { justify-content: center; -webkit-mask-image: none; mask-image: none; overflow: visible; gap: 34px; }
+  .brand img { height: 46px; }
 }
 
 /* ---- Hero --------------------------------------------------------------- */
