@@ -80,7 +80,11 @@ window.ADS = {
      Put the files in assets/gallery/ and list them here.
      type: "photo" | "video" (video = YouTube / Instagram / Drive link) */
   gallery: [
-    // { type: "photo", src: "assets/gallery/bvanta-01.jpg", caption: "Bvanta — 23 Oct", wide: true },
+    { type: "photo", src: "assets/gallery/the-crowd.jpg",         caption: "The crowd",         wide: true },
+    { type: "photo", src: "assets/gallery/live-percussion.jpg",   caption: "Live percussion",   tall: true },
+    { type: "photo", src: "assets/gallery/front-row.jpg",         caption: "Front row" },
+    { type: "photo", src: "assets/gallery/main-room.jpg",         caption: "Sound Society · the main room", wide: true },
+    { type: "photo", src: "assets/gallery/table-celebration.jpg", caption: "Table celebrations" },
     // { type: "video", src: "https://www.youtube.com/watch?v=XXXX", thumb: "assets/gallery/aftermovie.jpg", caption: "Aftermovie" },
   ]
 };
