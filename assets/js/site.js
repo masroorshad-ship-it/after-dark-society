@@ -201,7 +201,7 @@
   render("venues", (D.venues || []).map((v, i) => {
     const inner = `
       <span class="venue-area">${esc(v.area || "Dubai")}</span>
-      <span class="display">${esc(v.name)}</span>
+      ${v.logo ? `<img class="venue-logo" src="${esc(v.logo)}" alt="${esc(v.name)}" loading="lazy">` : `<span class="display">${esc(v.name)}</span>`}
       <small>${v.instagram ? `${esc(igHandle(v.instagram))} <span aria-hidden="true">↗</span>` : "Instagram coming soon"}</small>`;
     return v.instagram
       ? `<a class="venue reveal is-live" data-delay="${i % 4}" href="${esc(v.instagram)}" target="_blank" rel="noopener" aria-label="${esc(v.name)} on Instagram">${inner}</a>`

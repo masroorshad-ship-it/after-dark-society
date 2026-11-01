@@ -529,3 +529,4 @@ a.tile:hover { background: var(--ink-2); }
 .venue.is-live:hover { background: linear-gradient(180deg, rgba(214,176,106,.10), transparent), var(--ink-2); }
 .venue:not(.is-live) small { color: var(--muted); opacity: .7; }
 .footer-top li { color: var(--muted); }
+.venue-logo { height: 72px; width: auto; max-width: 85%; object-fit: contain; object-position: left center; }

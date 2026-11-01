@@ -52,7 +52,8 @@ window.ADS = {
   ],
 
   /* ---- Partner venues -------------------------------------------------- */
-  /* Add each club's Instagram URL (and area) and the card becomes a link automatically. */
+  /* Add each club's Instagram URL (and area) and the card becomes a link automatically.
+     Add logo: "assets/img/venues/<file>.png" and the logo replaces the written name. */
   venues: [
     { name: "Opal Room", area: "DIFC", instagram: "https://www.instagram.com/opalroomdifc/" },
     { name: "Hikari",    area: "DIFC", instagram: "https://www.instagram.com/hikaridifc/" },
