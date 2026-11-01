@@ -516,3 +516,16 @@ a.tile:hover { background: var(--ink-2); }
 .hero-bg img { width: 100%; height: 100%; object-fit: cover; opacity: .38; filter: saturate(1.1); animation: slowzoom 30s ease-in-out infinite alternate; }
 @keyframes slowzoom { from { transform: scale(1); } to { transform: scale(1.08); } }
 .page-hero.has-bg { background-size: cover; background-position: center 40%; background-repeat: no-repeat; background-origin: border-box; }
+
+/* Home page structure */
+.section.band { background: var(--ink-2); border-block: 1px solid var(--line); }
+.home-of { display: flex; align-items: center; gap: 22px; margin: 6px 0 30px; flex-wrap: wrap; }
+.home-of small { font: 600 11px/1 var(--f-body); letter-spacing: .26em; text-transform: uppercase; color: var(--muted); }
+.home-of img { height: 64px; width: auto; }
+/* Venue cards */
+.venues { border: 1px solid var(--line); border-bottom: 0; }
+.venue .venue-area { font: 600 10px/1 var(--f-body); letter-spacing: .28em; text-transform: uppercase; color: var(--gold); }
+.venue.is-live small { color: var(--gold-hi); }
+.venue.is-live:hover { background: linear-gradient(180deg, rgba(214,176,106,.10), transparent), var(--ink-2); }
+.venue:not(.is-live) small { color: var(--muted); opacity: .7; }
+.footer-top li { color: var(--muted); }

@@ -52,12 +52,12 @@ window.ADS = {
   ],
 
   /* ---- Partner venues -------------------------------------------------- */
-  /* Add each club's Instagram URL and it becomes a link automatically. */
+  /* Add each club's Instagram URL (and area) and the card becomes a link automatically. */
   venues: [
-    { name: "Opal Room", instagram: "" },
-    { name: "Hikari",    instagram: "" },
-    { name: "Zea",       instagram: "" },
-    { name: "Bvanta",    instagram: "" }
+    { name: "Opal Room", area: "DIFC", instagram: "https://www.instagram.com/opalroomdifc/" },
+    { name: "Hikari",    area: "",     instagram: "" },
+    { name: "Zea",       area: "",     instagram: "" },
+    { name: "Bvanta",    area: "",     instagram: "" }
   ],
 
   /* ---- Events ----------------------------------------------------------- */
