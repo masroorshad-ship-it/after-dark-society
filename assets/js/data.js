@@ -56,7 +56,7 @@ window.ADS = {
   venues: [
     { name: "Opal Room", area: "DIFC", instagram: "https://www.instagram.com/opalroomdifc/" },
     { name: "Hikari",    area: "DIFC", instagram: "https://www.instagram.com/hikaridifc/" },
-    { name: "Zea",       area: "",     instagram: "" },
+    { name: "Zea",       area: "",     instagram: "https://www.instagram.com/zea.dubai/" },
     { name: "Bvanta",    area: "",     instagram: "https://www.instagram.com/bvantadubai/" }
   ],
 
