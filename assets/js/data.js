@@ -55,10 +55,10 @@ window.ADS = {
   /* Add each club's Instagram URL (and area) and the card becomes a link automatically.
      Add logo: "assets/img/venues/<file>.png" and the logo replaces the written name. */
   venues: [
-    { name: "Opal Room", area: "DIFC", instagram: "https://www.instagram.com/opalroomdifc/" },
-    { name: "Hikari",    area: "DIFC", instagram: "https://www.instagram.com/hikaridifc/" },
-    { name: "Zea",       area: "",     instagram: "https://www.instagram.com/zea.dubai/" },
-    { name: "Bvanta",    area: "",     instagram: "https://www.instagram.com/bvantadubai/" }
+    { name: "Opal Room", area: "DIFC", instagram: "https://www.instagram.com/opalroomdifc/", logo: "assets/img/venues/opal-room.png" },
+    { name: "Hikari",    area: "DIFC", instagram: "https://www.instagram.com/hikaridifc/", logo: "assets/img/venues/hikari.png" },
+    { name: "Zea",       area: "",     instagram: "https://www.instagram.com/zea.dubai/", logo: "assets/img/venues/zea.png" },
+    { name: "Bvanta",    area: "",     instagram: "https://www.instagram.com/bvantadubai/", logo: "assets/img/venues/bvanta.png" }
   ],
 
   /* ---- Events ----------------------------------------------------------- */
