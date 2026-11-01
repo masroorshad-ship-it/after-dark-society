@@ -85,6 +85,8 @@ window.ADS = {
     { type: "photo", src: "assets/gallery/front-row.jpg",         caption: "Front row" },
     { type: "photo", src: "assets/gallery/main-room.jpg",         caption: "Sound Society · the main room", wide: true },
     { type: "photo", src: "assets/gallery/table-celebration.jpg", caption: "Table celebrations" },
+    { type: "photo", src: "assets/gallery/dj-booth.jpg",          caption: "Behind the decks", tall: true },
+    { type: "photo", src: "assets/gallery/blue-hour.jpg",         caption: "Blue hour on the floor", tall: true },
     { type: "photo", src: "assets/gallery/on-the-runway.jpg",     caption: "On the runway",     wide: true },
     { type: "photo", src: "assets/gallery/into-the-crowd.jpg",    caption: "Into the crowd",    wide: true },
     // { type: "video", src: "https://www.youtube.com/watch?v=XXXX", thumb: "assets/gallery/aftermovie.jpg", caption: "Aftermovie" },
