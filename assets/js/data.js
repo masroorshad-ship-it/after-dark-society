@@ -20,28 +20,36 @@ window.ADS = {
      See google-apps-script/Code.gs for the set-up steps. */
   formEndpoint: "https://script.google.com/macros/s/AKfycbyOpuICDOLfSsrVEm7rjFeB2hOWf42VFykPwv_Xx_RTL6kZoAhLwBmqx07BU--ZtKCr4Q/exec",
 
-  /* ---- Our brands (IPs) ------------------------------------------------- */
-  brands: [
-    {
-      name: "Bolly Room",
-      logo: "assets/img/bolly-room.png",
-      tag: "Bollywood, turned all the way up",
-      text: "Our flagship Bollywood party — big hooks, bigger drops, and a room that sings every word back."
+  /* ---- The Sound Society family ----------------------------------------
+     Sound Society is the parent company; After Dark Society and Bolly Room are
+     its brands. Used for the family section, logos and footer. */
+  family: {
+    parent: {
+      name: "Sound Society", logo: "assets/img/sound-society.png",
+      kicker: "The parent company · Melodic techno", id: "sound-society", photo: "assets/gallery/main-room.jpg",
+      expect: ["Melodic techno and deep, hypnotic sets", "Big sound and light production", "A crowd that came for the music"],
+      text: "Dubai's home for melodic techno: long, hypnotic sets, deep sound and a crowd that came for the music. Sound Society produces and manages every brand in the family."
     },
-    {
-      name: "Sound Society",
-      logo: "assets/img/sound-society.png",
-      tag: "For the ones who follow the sound",
-      text: "A curated music series built around the DJ — deeper cuts, longer sets, and a crowd that came for the music."
-    }
-  ],
+    children: [
+      {
+        name: "Bolly Room", logo: "assets/img/bolly-room.png",
+        kicker: "Boiler Room-style Bollywood", id: "bolly-room", photo: "assets/gallery/front-row.jpg",
+        expect: ["DJ in the middle of the crowd", "Raw, close-up and filmed", "Bollywood edits you won't hear anywhere else"],
+        text: "Bollywood, Boiler Room style. The DJ plays in the middle of the room with the crowd all around, every drop up close and filmed raw."
+      },
+      {
+        name: "After Dark Society", logo: "assets/img/after-dark-society.png", here: true,
+        kicker: "Full desi madness", id: "after-dark-society", photo: "assets/gallery/the-crowd.jpg",
+        expect: ["Bollywood and Punjabi bangers all night", "Dhol, live percussion and big moments", "VIP tables and bottle shows"],
+        text: "The loudest night in the family: Bollywood bangers, dhol drops and full desi madness from the first song to the last."
+      }
+    ]
+  },
 
-  /* ---- Signature experiences (event formats) -------------------------- */
-  formats: [
-    { name: "Exclusive Bollywood Nights", kicker: "After Dark Society", text: "Our signature: the biggest Bollywood anthems, remixed for the club, in the city's best rooms." },
-    { name: "Bolly Room",                 kicker: "High-energy",        text: "Bollywood and desi bangers at full volume — the night everyone sings along to." },
-    { name: "Sound Society",              kicker: "Music-led",          text: "DJ-first sessions with deeper, longer sets for the crowd that follows the sound." },
-    { name: "Private & Celebrations",     kicker: "Made to order",      text: "Birthdays, launches and private buy-outs, produced by the After Dark team." }
+  /* Brand logos shown in place of written names (events, footer). */
+  brands: [
+    { name: "Sound Society", logo: "assets/img/sound-society.png" },
+    { name: "Bolly Room",    logo: "assets/img/bolly-room.png" }
   ],
 
   /* ---- VIP tables --------------------------------------------------------
@@ -74,8 +82,8 @@ window.ADS = {
       phones: ["056 341 4140", "054 215 7865"],
       poster: "assets/events/desi-pataka.jpg", ticketUrl: ""
     },
-    { title: "Bolly Room",         brand: "Bolly Room",                venue: "Hikari",    date: null, ticketUrl: "" },
-    { title: "Sound Society",      brand: "Sound Society",             venue: "Zea",       date: null, ticketUrl: "" }
+    { title: "Bolly Room",         brand: "Bolly Room",    tagline: "Boiler Room-style Bollywood", venue: "Hikari", date: null, ticketUrl: "" },
+    { title: "Sound Society",      brand: "Sound Society", tagline: "Melodic techno",              venue: "Zea",    date: null, ticketUrl: "" }
   ],
 
   past: [

@@ -10,6 +10,7 @@
   const NAV = [
     ["index.html", "Home"],
     ["about.html", "About Us"],
+    ["brands.html", "Our Brands"],
     ["events.html", "Upcoming Events"],
     ["gallery.html", "Gallery"],
     ["book.html", "Book Your Table"],
@@ -57,6 +58,7 @@
         <div class="footer-top">
           <div>
             <img src="assets/img/after-dark-society.png" alt="After Dark Society" width="739" height="285" loading="lazy">
+            <p class="footer-parent">A <strong>Sound Society</strong> company</p>
             <div class="footer-ips">
               ${(D.brands || []).map((b) => `<img src="${esc(b.logo)}" alt="${esc(b.name)}" loading="lazy">`).join("")}
             </div>
@@ -75,7 +77,7 @@
           </div>
         </div>
         <div class="footer-bottom">
-          <span>© ${new Date().getFullYear()} After Dark Society. All rights reserved.</span>
+          <span>© ${new Date().getFullYear()} After Dark Society, a Sound Society company. All rights reserved.</span>
           <span>Strictly 21+. Dress to impress. Right of admission reserved.</span>
         </div>
       </div>`;
@@ -185,13 +187,22 @@
       </div>
     </article>`).join(""));
 
-  render("formats", (D.formats || []).map((f, i) => `
-    <article class="format reveal" data-delay="${i % 4}">
-      <span class="format-num">${String(i + 1).padStart(2, "0")}</span>
+  /* The Sound Society family: parent on top, brands underneath */
+  const fam = D.family;
+  const famCard = (f, cls) => `
+    <a href="brands.html#${esc(f.id)}" class="fam-card ${cls}${f.here ? " is-here" : ""} reveal">
+      ${f.here ? `<span class="chip fam-here">You are here</span>` : ""}
+      <img class="fam-logo" src="${esc(f.logo)}" alt="${esc(f.name)}" loading="lazy">
       <small>${esc(f.kicker)}</small>
-      ${mark(f.name, "format-logo") ? `<h3 class="format-mark">${mark(f.name, "format-logo")}</h3>` : `<h3 class="display">${esc(f.name)}</h3>`}
       <p>${esc(f.text)}</p>
-    </article>`).join(""));
+      <span class="fam-more">Explore ${esc(f.name)} →</span>
+    </a>`;
+  if (fam) render("family", `
+    <div class="family">
+      ${famCard(fam.parent, "fam-parent")}
+      <div class="fam-branch" aria-hidden="true"></div>
+      <div class="fam-children">${fam.children.map((c) => famCard(c, "fam-child")).join("")}</div>
+    </div>`);
 
   render("tables", (D.tables || []).map((t, i) => `
     <article class="table-card reveal${t.featured ? " featured" : ""}" data-delay="${i + 1}">
@@ -222,7 +233,7 @@
       ${dateBlock(e.date)}
       <div>
         ${mark(e.title, "event-logo") ? `<h3 class="event-mark">${mark(e.title, "event-logo")}</h3>` : `<h3>${esc(e.title)}${e.subtitle ? ` <span class="event-sub">${esc(e.subtitle)}</span>` : ""}</h3>`}
-        <p>${e.brand && !brandOf(e.brand) ? `<span class="chip">${esc(e.brand)}</span>` : ""}${e.venue ? esc(e.venue) : ""}${e.lineup ? ` · ${e.lineup.map(esc).join(" · ")}` : ""}</p>
+        <p>${e.tagline ? `<span class="chip">${esc(e.tagline)}</span>` : (e.brand && !brandOf(e.brand) ? `<span class="chip">${esc(e.brand)}</span>` : "")}${e.venue ? esc(e.venue) : ""}${e.lineup ? ` · ${e.lineup.map(esc).join(" · ")}` : ""}</p>
       </div>
       ${past
         ? (e.album ? `<a class="btn btn--ghost" href="${esc(e.album)}" target="_blank" rel="noopener">See the night</a>` : "")
@@ -231,6 +242,35 @@
             : `<a class="btn btn--ghost" href="${bookHref(e)}">Reserve a table</a>`)}
     </li>`;
   const limit = (el) => +(el && el.dataset.limit) || Infinity;
+
+  /* Our Brands page: one full section per brand, parent first */
+  if (D.family && document.getElementById("brand-sections")) {
+    const all = [D.family.parent].concat(D.family.children);
+    const brandEvents = (b) => (D.upcoming || []).filter((e) => (e.brand || "").toLowerCase() === b.name.toLowerCase());
+    render("brand-jump", all.map((b) => `<a href="#${esc(b.id)}">${esc(b.name)}</a>`).join(""));
+    render("brand-sections", all.map((b, i) => {
+      const evs = brandEvents(b);
+      return `
+      <section class="brand-sec${i % 2 ? " flip" : ""}" id="${esc(b.id)}">
+        <div class="brand-sec-media reveal"><img src="${esc(b.photo)}" alt="${esc(b.name)} night" loading="lazy"></div>
+        <div class="brand-sec-body reveal" data-delay="1">
+          <img class="fam-logo" src="${esc(b.logo)}" alt="${esc(b.name)}">
+          <span class="eyebrow">${esc(b.kicker)}</span>
+          ${b.here ? `<span class="chip" style="align-self:flex-start">This website</span>` : ""}
+          <p class="lead">${esc(b.text)}</p>
+          <ul class="brand-expect">${(b.expect || []).map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
+          <div class="brand-evs">
+            <small>Next nights</small>
+            ${evs.length ? evs.map((e) => `<a href="events.html">${esc(fullTitle(e))}${e.venue ? " · " + esc(e.venue) : ""} · ${e.date ? esc(dateLabel(e.date)) : "Date TBA"}</a>`).join("") : `<span>Dates announced soon</span>`}
+          </div>
+          <div class="hero-actions" style="justify-content:flex-start">
+            <a class="btn" href="book.html">Book a table</a>
+            <a class="btn btn--ghost" href="events.html">All events</a>
+          </div>
+        </div>
+      </section>`;
+    }).join(""));
+  }
 
   /* Featured "Next up" event: the soonest upcoming event that has a poster */
   const featured = (D.upcoming || [])
