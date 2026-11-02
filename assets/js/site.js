@@ -49,7 +49,7 @@
       C.email && `<li><a href="mailto:${esc(C.email)}">${esc(C.email)}</a></li>`,
       C.phone && `<li><a href="tel:${esc(C.phone.replace(/\s/g, ""))}">${esc(C.phone)}</a></li>`,
       C.whatsapp && `<li><a href="https://wa.me/${esc(C.whatsapp)}" target="_blank" rel="noopener">WhatsApp</a></li>`,
-      C.instagram && `<li><a href="${esc(C.instagram)}" target="_blank" rel="noopener">Instagram</a></li>`,
+      C.instagram && `<li><a href="${esc(C.instagram)}" target="_blank" rel="noopener">Instagram · ${esc("@" + C.instagram.replace(/[?#].*$/, "").replace(/\/+$/, "").split("/").pop())}</a></li>`,
       C.city && `<li>${esc(C.city)}</li>`
     ].filter(Boolean).join("") || `<li><a href="contact.html">Get in touch</a></li>`;
     footer.innerHTML = `
@@ -369,6 +369,9 @@
       ? `<a class="tile reveal" href="${esc(href)}" target="_blank" rel="noopener"><small>${k}</small><span>${esc(v)}</span></a>`
       : `<div class="tile reveal"><small>${k}</small><span>${esc(v)}</span></div>`).join("");
   }
+
+  /* Links to our own Instagram anywhere on the page */
+  if (C.instagram) $$("[data-ig]").forEach((a) => { a.href = C.instagram; a.hidden = false; });
 
   watch();
 })();

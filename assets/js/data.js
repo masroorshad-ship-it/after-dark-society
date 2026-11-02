@@ -10,7 +10,7 @@ window.ADS = {
     email: "",          // e.g. "hello@yourdomain.com" — used for mailto links + form fallback
     phone: "",          // e.g. "+91 98xxxxxxx"
     whatsapp: "",       // digits only, with country code, e.g. "9198xxxxxxxx"
-    instagram: "",      // full URL to the After Dark Society Instagram
+    instagram: "https://www.instagram.com/_dubaiafterdark_/",
     city: "Dubai"
   },
 
