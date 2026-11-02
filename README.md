@@ -31,12 +31,14 @@ Everything that changes lives in **`assets/js/data.js`**:
 - `past` — past nights, linked to their Google Drive albums
 - `gallery` — **8–12 best photos / videos only.** Put files in `assets/gallery/` and list them
 
-## ⚠️ Before going live: connect the forms
+## Form submissions → Google Sheet
 
-Until `formEndpoint` or `contact.email` is set, forms show "thank you" but **nothing is sent anywhere**.
-Easiest option: create a free form at [formspree.io](https://formspree.io), copy its URL
-(e.g. `https://formspree.io/f/abcdwxyz`) into `formEndpoint` — all bookings, PR, careers,
-contact and early-access submissions then arrive in your inbox.
+Every form (table bookings, PR, careers, contact, early access) is saved as a row in the Google Sheet
+**"After Dark Society — Website Submissions"**, one tab per form, with a *Status* column for your team.
+
+Set-up (once): open the Sheet → **Extensions → Apps Script** → paste `google-apps-script/Code.gs` →
+**Deploy → New deployment → Web app** (Execute as *Me*, access *Anyone*) → copy the Web app URL into
+`formEndpoint` in `assets/js/data.js`. Until that URL is set, forms show "thank you" but nothing is saved.
 
 ## Logos
 

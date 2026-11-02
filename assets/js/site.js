@@ -344,11 +344,15 @@
     // populate event dropdowns from data
     $$("select[data-events]", form).forEach((sel) => {
       (D.upcoming || []).forEach((e) => {
-        const v = e.title + (e.venue ? " @ " + e.venue : "");
+        const v = fullTitle(e) + (e.venue ? " @ " + e.venue : "");
         if (![...sel.options].some((o) => o.value === v)) sel.add(new Option(v, v), sel.options.length - 1);
       });
       if (ev) sel.value = ev;
     });
+
+    // spam trap: hidden from people, bots fill it in and get silently dropped
+    if (!form.elements.website) form.insertAdjacentHTML("beforeend",
+      '<input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">');
 
     const fail = (field, msg) => {
       const f = field.closest(".field"); if (!f) return;
@@ -381,8 +385,14 @@
       btn.disabled = true; const label = btn.textContent; btn.textContent = "Sending…";
       try {
         if (D.formEndpoint) {
-          const res = await fetch(D.formEndpoint, { method: "POST", headers: { "Accept": "application/json", "Content-Type": "application/json" }, body: JSON.stringify(data) });
-          if (!res.ok) throw new Error(res.status);
+          if (/script\.google\.com/.test(D.formEndpoint)) {
+            // Google Sheets (Apps Script web app): send as a simple form post. The reply
+            // can't be read cross-site, so a completed request counts as delivered.
+            await fetch(D.formEndpoint, { method: "POST", mode: "no-cors", body: new URLSearchParams(data) });
+          } else {
+            const res = await fetch(D.formEndpoint, { method: "POST", headers: { "Accept": "application/json", "Content-Type": "application/json" }, body: JSON.stringify(data) });
+            if (!res.ok) throw new Error(res.status);
+          }
         } else if (C.email) {
           const body = Object.entries(data).filter(([k]) => k !== "_form").map(([k, v]) => `${k}: ${v}`).join("\n");
           location.href = `mailto:${C.email}?subject=${encodeURIComponent("[" + kind + "] After Dark Society")}&body=${encodeURIComponent(body)}`;

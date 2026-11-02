@@ -14,9 +14,10 @@ window.ADS = {
     city: "Dubai"
   },
 
-  /* Paste a form endpoint (Formspree, Getform, Google Apps Script…) to receive
-     submissions by email. Leave empty and forms fall back to opening the
-     visitor's email app pre-filled (if contact.email is set). */
+  /* Where form submissions go. Paste the Google Apps Script "Web app URL"
+     (https://script.google.com/macros/s/…/exec) and every form lands as a row in
+     the "After Dark Society — Website Submissions" Google Sheet.
+     See google-apps-script/Code.gs for the set-up steps. */
   formEndpoint: "",
 
   /* ---- Our brands (IPs) ------------------------------------------------- */
