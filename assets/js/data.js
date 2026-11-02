@@ -10,7 +10,7 @@ window.ADS = {
     email: "",          // e.g. "hello@yourdomain.com" — used for mailto links + form fallback
     phone: "",          // e.g. "+91 98xxxxxxx"
     whatsapp: "",       // digits only, with country code, e.g. "9198xxxxxxxx"
-    instagram: "https://www.instagram.com/_dubaiafterdark_/",
+    instagram: "https://www.instagram.com/afterdarksocietydxb/",
     city: "Dubai"
   },
 
@@ -38,7 +38,7 @@ window.ADS = {
         text: "Bollywood, Boiler Room style. The DJ plays in the middle of the room with the crowd all around, every drop up close and filmed raw."
       },
       {
-        name: "After Dark Society", logo: "assets/img/after-dark-society.png", here: true,
+        name: "After Dark Society", logo: "assets/img/after-dark-society.png", here: true, instagram: "https://www.instagram.com/afterdarksocietydxb/",
         kicker: "Full desi madness", id: "after-dark-society", photo: "assets/gallery/the-crowd.jpg",
         expect: ["Bollywood and Punjabi bangers all night", "Dhol, live percussion and big moments", "VIP tables and bottle shows"],
         text: "The loudest night in the family: Bollywood bangers, dhol drops and full desi madness from the first song to the last."

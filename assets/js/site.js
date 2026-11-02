@@ -263,6 +263,7 @@
             <small>Next nights</small>
             ${evs.length ? evs.map((e) => `<a href="events.html">${esc(fullTitle(e))}${e.venue ? " · " + esc(e.venue) : ""} · ${e.date ? esc(dateLabel(e.date)) : "Date TBA"}</a>`).join("") : `<span>Dates announced soon</span>`}
           </div>
+          ${b.instagram ? `<a class="brand-ig" href="${esc(b.instagram)}" target="_blank" rel="noopener">Instagram · ${esc(igHandle(b.instagram))} ↗</a>` : ""}
           <div class="hero-actions" style="justify-content:flex-start">
             <a class="btn" href="book.html">Book a table</a>
             <a class="btn btn--ghost" href="events.html">All events</a>

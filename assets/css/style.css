@@ -609,3 +609,4 @@ a.fam-card { color: inherit; }
   .brand-sec.flip .brand-sec-media { order: 0; }
   .brand-sec-media img { aspect-ratio: 4 / 3; }
 }
+.brand-ig { color: var(--gold-hi); font-weight: 600; letter-spacing: .04em; align-self: flex-start; border-bottom: 1px solid var(--line-strong); }
