@@ -1,7 +1,9 @@
 # After Dark Society — website
 
 Static website for **After Dark Society** (Exclusive Bollywood Nights, Dubai), home of **Bolly Room** and **Sound Society**.
-No build step: plain HTML, CSS and JavaScript. Open `index.html` or host the folder anywhere (GitHub Pages, Netlify, Vercel…).
+No build step: plain HTML, CSS and JavaScript.
+
+**Live domain:** https://afterdarksociety.social (hosted on GitHub Pages — see *Going live* below).
 
 ## Pages
 
@@ -39,3 +41,23 @@ contact and early-access submissions then arrive in your inbox.
 ## Logos
 
 `assets/img/` holds transparent PNG versions of the After Dark Society, Bolly Room and Sound Society logos.
+
+## Going live on afterdarksociety.social (GitHub Pages)
+
+The repo already contains `CNAME` (the domain), `.nojekyll`, `404.html`, `robots.txt` and `sitemap.xml`.
+
+1. **Turn on Pages** — GitHub repo → **Settings → Pages** → *Build and deployment*:
+   Source **Deploy from a branch**, branch **`claude/folder-data-extraction-hbhuqs`**, folder **`/ (root)`** → **Save**.
+2. **Custom domain** — on the same page type `afterdarksociety.social` → **Save**.
+3. **DNS at your domain registrar** (where you bought the domain):
+
+   | Type  | Name / Host | Value |
+   |-------|-------------|-------|
+   | A     | `@`         | `185.199.108.153` |
+   | A     | `@`         | `185.199.109.153` |
+   | A     | `@`         | `185.199.110.153` |
+   | A     | `@`         | `185.199.111.153` |
+   | CNAME | `www`       | `masroorshad-ship-it.github.io` |
+
+   Delete any other A / AAAA / CNAME records for `@` and `www` (e.g. the registrar's "parked" page).
+4. Wait for DNS (usually 10 minutes – a few hours), then tick **Enforce HTTPS** on the Pages settings page.
