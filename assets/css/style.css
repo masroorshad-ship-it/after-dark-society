@@ -610,3 +610,5 @@ a.fam-card { color: inherit; }
   .brand-sec-media img { aspect-ratio: 4 / 3; }
 }
 .brand-ig { color: var(--gold-hi); font-weight: 600; letter-spacing: .04em; align-self: flex-start; border-bottom: 1px solid var(--line-strong); }
+.next-up + .next-up { padding-top: 50px; border-top: 1px solid var(--line); }
+.next-up-presenter { display: block; margin-top: 14px; font: 600 11px/1 var(--f-body); letter-spacing: .28em; text-transform: uppercase; color: var(--muted); }

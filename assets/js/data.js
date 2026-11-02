@@ -76,6 +76,15 @@ window.ADS = {
      (10pm when no time is given). An event with a poster is featured as "Next up". */
   upcoming: [
     {
+      title: "Ladies Room", subtitle: "Diwali Special", brand: "After Dark Society",
+      presenter: "Opal Room presents", tagline: "Dubai's new Bollywood playground",
+      venue: "Opal Room", address: "16th Floor, Emirates Financial Tower, DIFC, Dubai",
+      date: "2026-11-05", lineup: ["Misty", "Vishal", "Zenny"],
+      offers: ["Ladies: free drinks until 2am", "Gents: AED 199 for 2 hours of unlimited drinks + mixed platter"],
+      phones: ["056 341 4140"],
+      poster: "assets/events/ladies-room.jpg", ticketUrl: ""
+    },
+    {
       title: "Desi Pataka", subtitle: "Diwali Edition", brand: "After Dark Society",
       venue: "Opal Room", address: "16th Floor, Emirates Financial Tower, DIFC, Dubai",
       date: "2026-11-07", lineup: ["Rahul", "Amaan", "Vishal"],

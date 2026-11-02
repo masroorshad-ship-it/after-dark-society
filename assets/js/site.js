@@ -279,20 +279,22 @@
   const featured = (D.upcoming || [])
     .map((e) => ({ e, p: parseDate(e.date) }))
     .filter((x) => x.e.poster && x.p && x.p.d > new Date(Date.now() - 864e5))
-    .sort((a, b) => a.p.d - b.p.d)[0];
+    .sort((a, b) => a.p.d - b.p.d);
   const nextUp = document.getElementById("next-up");
-  if (nextUp && featured) {
-    const { e, p } = featured, dt = p.cal;
-    nextUp.innerHTML = `
+  if (nextUp && featured.length) {
+    nextUp.innerHTML = featured.map(({ e, p }, idx) => { const dt = p.cal; return `
       <article class="next-up reveal">
         <a class="next-up-poster" href="${esc(e.poster)}" target="_blank" rel="noopener" aria-label="Open the ${esc(e.title)} flyer">
           <img src="${esc(e.poster)}" alt="${esc(fullTitle(e))} flyer" loading="lazy">
         </a>
         <div class="next-up-body">
-          <span class="eyebrow">Next up · ${DAYS[dt.getDay()]} ${dt.getDate()} ${MONTHS[dt.getMonth()]}</span>
+          <span class="eyebrow">${idx === 0 ? "Next up" : "Also coming"} · ${DAYS[dt.getDay()]} ${dt.getDate()} ${MONTHS[dt.getMonth()]}</span>
+          ${e.presenter ? `<small class="next-up-presenter">${esc(e.presenter)}</small>` : ""}
           <h3 class="display">${esc(e.title)}</h3>
           ${e.subtitle ? `<p class="script next-up-sub">${esc(e.subtitle)}</p>` : ""}
           <dl class="next-up-facts">
+            ${e.tagline ? `<div><dt>The night</dt><dd>${esc(e.tagline)}</dd></div>` : ""}
+            ${e.offers ? `<div><dt>Offers</dt><dd>${e.offers.map(esc).join("<br>")}</dd></div>` : ""}
             ${e.lineup ? `<div><dt>Line-up</dt><dd>${e.lineup.map(esc).join(" · ")}</dd></div>` : ""}
             ${e.venue ? `<div><dt>Venue</dt><dd>${esc(e.venue)}${e.address ? `<br><span>${esc(e.address)}</span>` : ""}</dd></div>` : ""}
             ${e.phones ? `<div><dt>Reservations</dt><dd>${e.phones.map((n) => `<a href="${tel(n)}">${esc(n)}</a>`).join(" · ")}</dd></div>` : ""}
@@ -302,11 +304,11 @@
             ${e.phones ? `<a class="btn btn--ghost" href="${tel(e.phones[0])}">Call to book</a>` : ""}
           </div>
         </div>
-      </article>`;
+      </article>`; }).join("");
     watch(nextUp);
   }
   const upEl = document.getElementById("upcoming-list");
-  const rest = (D.upcoming || []).filter((e) => !(nextUp && featured && e === featured.e));
+  const rest = (D.upcoming || []).filter((e) => !(nextUp && featured.some((f) => f.e === e)));
   render("upcoming-list", rest.slice(0, limit(upEl)).map((e) => eventRow(e, false)).join(""));
   const pastEl = document.getElementById("past-list");
   render("past-list", (D.past || []).slice(0, limit(pastEl)).map((e) => eventRow(e, true)).join(""));
