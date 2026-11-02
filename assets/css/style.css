@@ -555,3 +555,6 @@ a.tile:hover { background: var(--ink-2); }
   .next-up-poster { max-width: 420px; }
   .next-up-facts > div { grid-template-columns: 1fr; gap: 6px; }
 }
+
+/* Hide the scroll cue when the screen is too short for it to sit below the buttons */
+@media (max-height: 900px) { .scroll-cue { display: none; } }
