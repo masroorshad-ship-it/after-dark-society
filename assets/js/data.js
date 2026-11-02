@@ -62,10 +62,17 @@ window.ADS = {
   ],
 
   /* ---- Events ----------------------------------------------------------- */
-  /* date: "YYYY-MM-DDTHH:MM" (local time) or null for "Date TBA".
-     The home page countdown locks onto the next upcoming event with a date. */
+  /* date: "YYYY-MM-DD" or "YYYY-MM-DDTHH:MM" (Dubai time), or null for "Date TBA".
+     The home page countdown locks onto the next upcoming event with a date
+     (10pm when no time is given). An event with a poster is featured as "Next up". */
   upcoming: [
-    { title: "After Dark Society", brand: "Exclusive Bollywood Night", venue: "Opal Room", date: null, ticketUrl: "" },
+    {
+      title: "Desi Pataka", subtitle: "Diwali Edition", brand: "After Dark Society",
+      venue: "Opal Room", address: "16th Floor, Emirates Financial Tower, DIFC, Dubai",
+      date: "2026-11-07", lineup: ["Rahul", "Amaan", "Vishal"],
+      phones: ["056 341 4140", "054 215 7865"],
+      poster: "assets/events/desi-pataka.jpg", ticketUrl: ""
+    },
     { title: "Bolly Room",         brand: "Bolly Room",                venue: "Hikari",    date: null, ticketUrl: "" },
     { title: "Sound Society",      brand: "Sound Society",             venue: "Zea",       date: null, ticketUrl: "" }
   ],

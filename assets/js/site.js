@@ -127,12 +127,17 @@
     if (!s) return null;
     const m = String(s).match(/^(\d{4})-(\d{2})(?:-(\d{2}))?(?:T(\d{2}):(\d{2}))?/);
     if (!m) return null;
-    return { d: new Date(+m[1], +m[2] - 1, +(m[3] || 1), +(m[4] || 22), +(m[5] || 0)), hasDay: !!m[3] };
+    // d = the real moment (event times are Dubai time, UTC+4); cal = the calendar date for display
+    return {
+      d: new Date(Date.UTC(+m[1], +m[2] - 1, +(m[3] || 1), +(m[4] || 22) - 4, +(m[5] || 0))),
+      cal: new Date(+m[1], +m[2] - 1, +(m[3] || 1)),
+      hasDay: !!m[3]
+    };
   };
   const dateBlock = (s) => {
     const p = parseDate(s);
     if (!p) return `<div class="event-date"><span class="tba">Date<br>TBA</span></div>`;
-    const d = p.d;
+    const d = p.cal;
     return p.hasDay
       ? `<div class="event-date"><b>${String(d.getDate()).padStart(2, "0")}</b>${MONTHS[d.getMonth()]} ${d.getFullYear()}</div>`
       : `<div class="event-date"><b>${MONTHS[d.getMonth()]}</b>${d.getFullYear()}</div>`;
@@ -208,22 +213,58 @@
       : `<div class="venue reveal" data-delay="${i % 4}">${inner}</div>`;
   }).join(""));
 
+  const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const tel = (n) => "tel:+971" + String(n).replace(/\D/g, "").replace(/^0/, "");
+  const fullTitle = (e) => e.title + (e.subtitle ? " — " + e.subtitle : "");
+  const bookHref = (e) => `book.html?event=${encodeURIComponent(fullTitle(e) + (e.venue ? " @ " + e.venue : ""))}`;
   const eventRow = (e, past) => `
     <li class="event reveal">
       ${dateBlock(e.date)}
       <div>
-        ${mark(e.title, "event-logo") ? `<h3 class="event-mark">${mark(e.title, "event-logo")}</h3>` : `<h3>${esc(e.title)}</h3>`}
-        <p>${e.brand && !brandOf(e.brand) ? `<span class="chip">${esc(e.brand)}</span>` : ""}${e.venue ? esc(e.venue) : ""}</p>
+        ${mark(e.title, "event-logo") ? `<h3 class="event-mark">${mark(e.title, "event-logo")}</h3>` : `<h3>${esc(e.title)}${e.subtitle ? ` <span class="event-sub">${esc(e.subtitle)}</span>` : ""}</h3>`}
+        <p>${e.brand && !brandOf(e.brand) ? `<span class="chip">${esc(e.brand)}</span>` : ""}${e.venue ? esc(e.venue) : ""}${e.lineup ? ` · ${e.lineup.map(esc).join(" · ")}` : ""}</p>
       </div>
       ${past
         ? (e.album ? `<a class="btn btn--ghost" href="${esc(e.album)}" target="_blank" rel="noopener">See the night</a>` : "")
         : (e.ticketUrl
             ? `<a class="btn" href="${esc(e.ticketUrl)}" target="_blank" rel="noopener">Tickets</a>`
-            : `<a class="btn btn--ghost" href="book.html?event=${encodeURIComponent(e.title + (e.venue ? " @ " + e.venue : ""))}">Reserve a table</a>`)}
+            : `<a class="btn btn--ghost" href="${bookHref(e)}">Reserve a table</a>`)}
     </li>`;
   const limit = (el) => +(el && el.dataset.limit) || Infinity;
+
+  /* Featured "Next up" event: the soonest upcoming event that has a poster */
+  const featured = (D.upcoming || [])
+    .map((e) => ({ e, p: parseDate(e.date) }))
+    .filter((x) => x.e.poster && x.p && x.p.d > new Date(Date.now() - 864e5))
+    .sort((a, b) => a.p.d - b.p.d)[0];
+  const nextUp = document.getElementById("next-up");
+  if (nextUp && featured) {
+    const { e, p } = featured, dt = p.cal;
+    nextUp.innerHTML = `
+      <article class="next-up reveal">
+        <a class="next-up-poster" href="${esc(e.poster)}" target="_blank" rel="noopener" aria-label="Open the ${esc(e.title)} flyer">
+          <img src="${esc(e.poster)}" alt="${esc(fullTitle(e))} flyer" loading="lazy">
+        </a>
+        <div class="next-up-body">
+          <span class="eyebrow">Next up · ${DAYS[dt.getDay()]} ${dt.getDate()} ${MONTHS[dt.getMonth()]}</span>
+          <h3 class="display">${esc(e.title)}</h3>
+          ${e.subtitle ? `<p class="script next-up-sub">${esc(e.subtitle)}</p>` : ""}
+          <dl class="next-up-facts">
+            ${e.lineup ? `<div><dt>Line-up</dt><dd>${e.lineup.map(esc).join(" · ")}</dd></div>` : ""}
+            ${e.venue ? `<div><dt>Venue</dt><dd>${esc(e.venue)}${e.address ? `<br><span>${esc(e.address)}</span>` : ""}</dd></div>` : ""}
+            ${e.phones ? `<div><dt>Reservations</dt><dd>${e.phones.map((n) => `<a href="${tel(n)}">${esc(n)}</a>`).join(" · ")}</dd></div>` : ""}
+          </dl>
+          <div class="next-up-actions">
+            ${e.ticketUrl ? `<a class="btn" href="${esc(e.ticketUrl)}" target="_blank" rel="noopener">Tickets</a>` : `<a class="btn" href="${bookHref(e)}">Reserve a table</a>`}
+            ${e.phones ? `<a class="btn btn--ghost" href="${tel(e.phones[0])}">Call to book</a>` : ""}
+          </div>
+        </div>
+      </article>`;
+    watch(nextUp);
+  }
   const upEl = document.getElementById("upcoming-list");
-  render("upcoming-list", (D.upcoming || []).slice(0, limit(upEl)).map((e) => eventRow(e, false)).join(""));
+  const rest = (D.upcoming || []).filter((e) => !(nextUp && featured && e === featured.e));
+  render("upcoming-list", rest.slice(0, limit(upEl)).map((e) => eventRow(e, false)).join(""));
   const pastEl = document.getElementById("past-list");
   render("past-list", (D.past || []).slice(0, limit(pastEl)).map((e) => eventRow(e, true)).join(""));
 
@@ -233,7 +274,7 @@
       <span class="display">${esc(p.title)}</span>
       <small style="color:var(--gold)">Open album ↗</small>
     </a>`).join(""));
-  function dateLabel(s) { const p = parseDate(s); return p ? (p.hasDay ? `${p.d.getDate()} ${MONTHS[p.d.getMonth()]} ${p.d.getFullYear()}` : `${MONTHS[p.d.getMonth()]} ${p.d.getFullYear()}`) : ""; }
+  function dateLabel(s) { const p = parseDate(s); return p ? (p.hasDay ? `${p.cal.getDate()} ${MONTHS[p.cal.getMonth()]} ${p.cal.getFullYear()}` : `${MONTHS[p.cal.getMonth()]} ${p.cal.getFullYear()}`) : ""; }
 
   /* Gallery: real items if provided, otherwise tasteful placeholders */
   const gal = document.getElementById("gallery");
