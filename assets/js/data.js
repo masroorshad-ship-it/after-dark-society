@@ -18,7 +18,7 @@ window.ADS = {
      (https://script.google.com/macros/s/…/exec) and every form lands as a row in
      the "After Dark Society — Website Submissions" Google Sheet.
      See google-apps-script/Code.gs for the set-up steps. */
-  formEndpoint: "",
+  formEndpoint: "https://script.google.com/macros/s/AKfycbyOpuICDOLfSsrVEm7rjFeB2hOWf42VFykPwv_Xx_RTL6kZoAhLwBmqx07BU--ZtKCr4Q/exec",
 
   /* ---- Our brands (IPs) ------------------------------------------------- */
   brands: [
