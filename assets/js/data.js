@@ -95,7 +95,7 @@ window.ADS = {
       title: "Elektraa", subtitle: "Afters", brand: "Sound Society",
       presenter: "Autoplay × Sound Society present", tagline: "Melodic techno",
       venue: "Opal Room", address: "16th Floor, Emirates Financial Tower, DIFC, Dubai",
-      date: "2026-11-27T22:00", lineup: ["Jose", "Tushar", "Vishal"],
+      date: "2026-11-27T22:00", support: ["Shehzad", "Vishal"],
       offers: ["Tickets on District"],
       phones: ["056 341 4140", "054 215 7865"],
       poster: "assets/events/elektraa.jpg", ticketUrl: ""

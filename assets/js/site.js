@@ -235,7 +235,7 @@
       ${dateBlock(e.date)}
       <div>
         ${mark(e.title, "event-logo") ? `<h3 class="event-mark">${mark(e.title, "event-logo")}</h3>` : `<h3>${esc(e.title)}${e.subtitle ? ` <span class="event-sub">${esc(e.subtitle)}</span>` : ""}</h3>`}
-        <p>${e.tagline ? `<span class="chip">${esc(e.tagline)}</span>` : (e.brand && !brandOf(e.brand) ? `<span class="chip">${esc(e.brand)}</span>` : "")}${e.venue ? esc(e.venue) : ""}${e.lineup ? ` · ${e.lineup.map(esc).join(" · ")}` : ""}</p>
+        <p>${e.tagline ? `<span class="chip">${esc(e.tagline)}</span>` : (e.brand && !brandOf(e.brand) ? `<span class="chip">${esc(e.brand)}</span>` : "")}${e.venue ? esc(e.venue) : ""}${e.lineup ? ` · ${e.lineup.map(esc).join(" · ")}` : ""}${e.support ? ` · support: ${e.support.map(esc).join(" · ")}` : ""}</p>
       </div>
       ${past
         ? (e.album ? `<a class="btn btn--ghost" href="${esc(e.album)}" target="_blank" rel="noopener">See the night</a>` : "")
@@ -295,6 +295,7 @@
           <dl class="next-up-facts">
             ${e.tagline ? `<div><dt>The night</dt><dd>${esc(e.tagline)}</dd></div>` : ""}
             ${e.offers ? `<div><dt>Offers</dt><dd>${e.offers.map(esc).join("<br>")}</dd></div>` : ""}
+            ${e.support ? `<div><dt>Support</dt><dd>${e.support.map(esc).join(" · ")}</dd></div>` : ""}
             ${e.lineup ? `<div><dt>Line-up</dt><dd>${e.lineup.map(esc).join(" · ")}</dd></div>` : ""}
             ${e.venue ? `<div><dt>Venue</dt><dd>${esc(e.venue)}${e.address ? `<br><span>${esc(e.address)}</span>` : ""}</dd></div>` : ""}
             ${e.phones ? `<div><dt>Reservations</dt><dd>${e.phones.map((n) => `<a href="${tel(n)}">${esc(n)}</a>`).join(" · ")}</dd></div>` : ""}
