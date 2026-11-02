@@ -9,7 +9,7 @@ No build step: plain HTML, CSS and JavaScript.
 
 | Page | File |
 | --- | --- |
-| Home | `index.html` — arrival + countdown, signature experiences, our rhythm, brands, upcoming events, VIP tables, gallery, venues, early-access sign-up |
+| Home | `index.html` — arrival + countdown, our rhythm, signature experiences, next-up event + upcoming events, gallery highlights, VIP tables, venues, early-access sign-up |
 | About Us | `about.html` |
 | Upcoming Events | `events.html` (upcoming + past nights with album links) |
 | Gallery | `gallery.html` |
