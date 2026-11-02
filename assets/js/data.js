@@ -91,15 +91,6 @@ window.ADS = {
       phones: ["056 341 4140", "054 215 7865"],
       poster: "assets/events/desi-pataka.jpg", ticketUrl: ""
     },
-    {
-      title: "Elektraa", subtitle: "Afters", brand: "Sound Society",
-      presenter: "Autoplay × Sound Society present", tagline: "Melodic techno",
-      venue: "Opal Room", address: "16th Floor, Emirates Financial Tower, DIFC, Dubai",
-      date: "2026-11-27T22:00", support: ["Shehzad", "Vishal"],
-      offers: ["Tickets on District"],
-      phones: ["056 341 4140", "054 215 7865"],
-      poster: "assets/events/elektraa.jpg", ticketUrl: ""
-    },
     { title: "Bolly Room",         brand: "Bolly Room",    tagline: "Boiler Room-style Bollywood", venue: "Hikari", date: null, ticketUrl: "" },
     { title: "Sound Society",      brand: "Sound Society", tagline: "Melodic techno",              venue: "Zea",    date: null, ticketUrl: "" }
   ],
