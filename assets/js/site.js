@@ -51,6 +51,8 @@
       C.phone && `<li><a href="tel:${esc(C.phone.replace(/\s/g, ""))}">${esc(C.phone)}</a></li>`,
       C.whatsapp && `<li><a href="https://wa.me/${esc(C.whatsapp)}" target="_blank" rel="noopener">WhatsApp</a></li>`,
       C.instagram && `<li><a href="${esc(C.instagram)}" target="_blank" rel="noopener">Instagram · ${esc("@" + C.instagram.replace(/[?#].*$/, "").replace(/\/+$/, "").split("/").pop())}</a></li>`,
+      ...((D.family ? [D.family.parent].concat(D.family.children) : []).filter((f) => f.instagram && f.instagram !== C.instagram)
+        .map((f) => `<li><a href="${esc(f.instagram)}" target="_blank" rel="noopener">${esc(f.name)} · ${esc("@" + f.instagram.replace(/[?#].*$/, "").replace(/\/+$/, "").split("/").pop())}</a></li>`)),
       C.city && `<li>${esc(C.city)}</li>`
     ].filter(Boolean).join("") || `<li><a href="contact.html">Get in touch</a></li>`;
     footer.innerHTML = `

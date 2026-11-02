@@ -25,14 +25,14 @@ window.ADS = {
      its brands. Used for the family section, logos and footer. */
   family: {
     parent: {
-      name: "Sound Society", logo: "assets/img/sound-society.png",
+      name: "Sound Society", logo: "assets/img/sound-society.png", instagram: "https://www.instagram.com/soundsocietydxb/",
       kicker: "The parent company · Melodic techno", id: "sound-society", photo: "assets/gallery/main-room.jpg",
       expect: ["Melodic techno and deep, hypnotic sets", "Big sound and light production", "A crowd that came for the music"],
       text: "Dubai's home for melodic techno: long, hypnotic sets, deep sound and a crowd that came for the music. Sound Society produces and manages every brand in the family."
     },
     children: [
       {
-        name: "Bolly Room", logo: "assets/img/bolly-room.png",
+        name: "Bolly Room", logo: "assets/img/bolly-room.png", instagram: "https://www.instagram.com/bollyroomdxb/",
         kicker: "Boiler Room-style Bollywood", id: "bolly-room", photo: "assets/gallery/front-row.jpg",
         expect: ["DJ in the middle of the crowd", "Raw, close-up and filmed", "Bollywood edits you won't hear anywhere else"],
         text: "Bollywood, Boiler Room style. The DJ plays in the middle of the room with the crowd all around, every drop up close and filmed raw."
