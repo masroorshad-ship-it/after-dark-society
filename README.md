@@ -11,7 +11,7 @@ No build step: plain HTML, CSS and JavaScript.
 | --- | --- |
 | Home | `index.html` — arrival + countdown, our rhythm, signature experiences, next-up event + upcoming events, gallery highlights, VIP tables, venues, early-access sign-up |
 | About Us | `about.html` |
-| Upcoming Events | `events.html` (upcoming + past nights with album links) |
+| Upcoming Events | `events.html` (upcoming nights) |
 | Gallery | `gallery.html` |
 | Book Your Table | `book.html` (concierge request form) |
 | Talk to PR | `pr.html` |
@@ -28,7 +28,6 @@ Everything that changes lives in **`assets/js/data.js`**:
 - `brands`, `formats`, `tables` (VIP table names/perks — drafts, please confirm)
 - `venues` — Opal Room, Bvanta; add each club's Instagram URL
 - `upcoming` — set `date: "2026-12-05T22:00"` and the home-page countdown starts automatically
-- `past` — past nights, linked to their Google Drive albums
 - `gallery` — **8–12 best photos / videos only.** Put files in `assets/gallery/` and list them
 
 ## Form submissions → Google Sheet

@@ -91,11 +91,7 @@ window.ADS = {
     }
   ],
 
-  past: [
-    { title: "Bvanta Night",  venue: "Bvanta", date: "2026-10-23", album: "https://drive.google.com/drive/folders/1PJgzR2z7PqdHw_Lj-auENoRCYYCLsvZK" },
-    { title: "Kikkat",        venue: "",       date: "2026-10",    album: "https://drive.google.com/drive/folders/1n6__yLr28z2DTSR0unLfyDlkLBJfbq1l" },
-    { title: "Rodolphe",      venue: "",       date: "2026-09-26", album: "https://drive.google.com/drive/folders/1KY7ctE85QecnnGBucxbuTohvwrC0zf96" }
-  ],
+  past: [],
 
   /* ---- Gallery ---------------------------------------------------------- */
   /* Keep this short and strong — 8–12 of the best shots, not everything.
