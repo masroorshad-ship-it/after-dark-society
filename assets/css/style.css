@@ -613,3 +613,12 @@ a.fam-card { color: inherit; }
 .next-up + .next-up { padding-top: 50px; border-top: 1px solid var(--line); }
 .next-up-presenter { display: block; margin-top: 14px; font: 600 11px/1 var(--f-body); letter-spacing: .28em; text-transform: uppercase; color: var(--muted); }
 .venues { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+
+/* Photo backdrops for plain sections: photo sits behind a heavy dark wash so text stays readable */
+.photo-band { position: relative; isolation: isolate; overflow: hidden; }
+.photo-band::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(180deg, var(--ink) 0%, rgba(6,5,8,.80) 18%, rgba(6,5,8,.78) 82%, var(--ink) 100%), var(--photo) center / cover no-repeat;
+}
+.photo-band.band::after { background: linear-gradient(180deg, var(--ink-2) 0%, rgba(13,11,16,.80) 18%, rgba(13,11,16,.80) 82%, var(--ink-2) 100%), var(--photo) center / cover no-repeat; }
+.photo-band .form { background: rgba(13,11,16,.82); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }

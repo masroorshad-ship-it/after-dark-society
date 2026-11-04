@@ -26,7 +26,7 @@ window.ADS = {
   family: {
     parent: {
       name: "Sound Society", logo: "assets/img/sound-society.png", instagram: "https://www.instagram.com/soundsocietydxb/",
-      kicker: "The parent company · Melodic techno", id: "sound-society", photo: "assets/gallery/main-room.jpg",
+      kicker: "The parent company · Melodic techno", id: "sound-society", photo: "assets/gallery/sound-society-dj.jpg",
       expect: ["Melodic techno and deep, hypnotic sets", "Big sound and light production", "A crowd that came for the music"],
       text: "Dubai's home for melodic techno: long, hypnotic sets, deep sound and a crowd that came for the music. Sound Society produces and manages every brand in the family."
     },
