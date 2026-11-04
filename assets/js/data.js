@@ -107,6 +107,8 @@ window.ADS = {
     { type: "photo", src: "assets/gallery/blue-hour.jpg",         caption: "Blue hour on the floor", tall: true },
     { type: "photo", src: "assets/gallery/on-the-runway.jpg",     caption: "On the runway",     wide: true },
     { type: "photo", src: "assets/gallery/into-the-crowd.jpg",    caption: "Into the crowd",    wide: true },
+    { type: "photo", src: "assets/gallery/bolly-room-chandeliers.jpg", caption: "Bolly Room · under the chandeliers", wide: true },
+    { type: "photo", src: "assets/gallery/bolly-room-booth.jpg",       caption: "Bolly Room · the booth",             wide: true },
     // { type: "video", src: "https://www.youtube.com/watch?v=XXXX", thumb: "assets/gallery/aftermovie.jpg", caption: "Aftermovie" },
   ]
 };
