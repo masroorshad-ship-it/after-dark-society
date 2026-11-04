@@ -90,9 +90,7 @@ window.ADS = {
       date: "2026-11-07", lineup: ["Rahul", "Amaan", "Vishal"],
       phones: ["056 341 4140", "054 215 7865"],
       poster: "assets/events/desi-pataka.jpg", ticketUrl: ""
-    },
-    { title: "Bolly Room",         brand: "Bolly Room",    tagline: "Boiler Room-style Bollywood", venue: "Hikari", date: null, ticketUrl: "" },
-    { title: "Sound Society",      brand: "Sound Society", tagline: "Melodic techno",              venue: "Zea",    date: null, ticketUrl: "" }
+    }
   ],
 
   past: [
