@@ -74,12 +74,13 @@ window.ADS = {
      (10pm when no time is given). An event with a poster is featured as "Next up". */
   upcoming: [
     {
-      title: "Pajama Party", brand: "After Dark Society",
-      presenter: "After Dark Society presents", tagline: "Opal Room × Saturdays × After Dark",
+      title: "Elektraa", subtitle: "Afters", brand: "Sound Society",
+      presenter: "Sound Society presents", tagline: "Afro house · Melodic techno",
       venue: "Opal Room", address: "16th Floor, Emirates Financial Tower, DIFC, Dubai",
-      date: "2026-11-14", lineup: ["Beatz", "Atul", "Vishal"],
-      phones: ["056 341 4140", "054 215 7865"],
-      poster: "assets/events/pajama-party.jpg", ticketUrl: ""
+      date: "2026-11-27T22:00", support: ["Shezhad K", "Vishal"],
+      offers: ["Tickets on District"],
+      phones: ["056 341 4140", "056 640 0207"],
+      poster: "assets/events/elektraa.jpg", ticketUrl: ""
     }
   ],
 
