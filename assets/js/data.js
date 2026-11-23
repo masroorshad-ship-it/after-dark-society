@@ -80,7 +80,7 @@ window.ADS = {
       date: "2026-11-27T22:00", support: ["Shezhad K", "Vishal"],
       offers: ["Tickets on District"],
       phones: ["056 341 4140", "056 640 0207"],
-      poster: "assets/events/elektraa.jpg", ticketUrl: ""
+      poster: "assets/events/elektraa.jpg", ticketUrl: "https://link.district.ae/DSTRKT/5njicohf"
     }
   ],
 
