@@ -81,6 +81,15 @@ window.ADS = {
       offers: ["Tickets on District"],
       phones: ["056 341 4140", "056 640 0207"],
       poster: "assets/events/elektraa.jpg", ticketUrl: "https://link.district.ae/DSTRKT/5njicohf"
+    },
+    {
+      title: "Sundowner", subtitle: "All Black Edition", brand: "After Dark Society",
+      presenter: "After Dark Society presents", tagline: "Sunset on the water · 5–9pm · Invites only",
+      venue: "Jaddaf Waterfront", address: "Jameel Arts Centre, Al Jaddaf, next to Palazzo Versace, Dubai",
+      date: "2026-11-28T17:00", lineup: ["DJ G2"],
+      offers: ["Invites only: DM us on Instagram for an invite", "Dress code: all black"],
+      poster: "assets/events/sundowner.jpg",
+      ticketUrl: "https://ig.me/m/afterdarksocietydxb", ticketLabel: "DM for invite"
     }
   ],
 

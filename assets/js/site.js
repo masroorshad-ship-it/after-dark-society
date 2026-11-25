@@ -240,7 +240,7 @@
       ${past
         ? (e.album ? `<a class="btn btn--ghost" href="${esc(e.album)}" target="_blank" rel="noopener">See the night</a>` : "")
         : (e.ticketUrl
-            ? `<a class="btn" href="${esc(e.ticketUrl)}" target="_blank" rel="noopener">Tickets</a>`
+            ? `<a class="btn" href="${esc(e.ticketUrl)}" target="_blank" rel="noopener">${esc(e.ticketLabel || "Tickets")}</a>`
             : `<a class="btn btn--ghost" href="${bookHref(e)}">Reserve a table</a>`)}
     </li>`;
   const limit = (el) => +(el && el.dataset.limit) || Infinity;
@@ -301,7 +301,7 @@
             ${e.phones ? `<div><dt>Reservations</dt><dd>${e.phones.map((n) => `<a href="${tel(n)}">${esc(n)}</a>`).join(" · ")}</dd></div>` : ""}
           </dl>
           <div class="next-up-actions">
-            ${e.ticketUrl ? `<a class="btn" href="${esc(e.ticketUrl)}" target="_blank" rel="noopener">Tickets</a>` : `<a class="btn" href="${bookHref(e)}">Reserve a table</a>`}
+            ${e.ticketUrl ? `<a class="btn" href="${esc(e.ticketUrl)}" target="_blank" rel="noopener">${esc(e.ticketLabel || "Tickets")}</a>` : `<a class="btn" href="${bookHref(e)}">Reserve a table</a>`}
             ${e.phones ? `<a class="btn btn--ghost" href="${tel(e.phones[0])}">Call to book</a>` : ""}
           </div>
         </div>
